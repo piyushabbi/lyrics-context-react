@@ -18,10 +18,13 @@ export class Provider extends Component {
 			}/chart.tracks.get?page=1&page_size=10&country=us&f_has_lyrics=1&apikey=${
 				process.env.REACT_APP_API_KEY
 			}`;
-      const response = await axios.get(url);
+			const response = await axios.get(url);
 			this.setState(prevState => ({
-        trackList: [...prevState.trackList, ...response.data.message.body.track_list]
-      }));
+				trackList: [
+					...prevState.trackList,
+					...response.data.message.body.track_list
+				]
+			}));
 		} catch (e) {
 			console.log('API ERROR', new Error(e));
 		}
