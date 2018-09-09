@@ -4,11 +4,24 @@ require('dotenv').config();
 
 const Context = React.createContext();
 
+const reducer = (state, action) => {
+	switch (action.type) {
+		case 'SEARCH_TRACKS':
+			return {
+				...state,
+				trackList: action.payload,
+				heading: 'Search Results'
+			};
+			default: return state;
+	}
+};
+
 // This is what we wrap our entire application with.
 export class Provider extends Component {
 	state = {
 		heading: 'Top 10 Tracks',
-		trackList: []
+		trackList: [],
+		dispatch: action => this.setState(state => reducer(state, action))
 	};
 
 	async componentDidMount() {

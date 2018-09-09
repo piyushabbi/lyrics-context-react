@@ -13,7 +13,7 @@ class Tracks extends Component {
 							<Spinner />
 						) : (
 							<Fragment>
-								<h1 className="mb-4">{value.heading}</h1>
+								<h1 className="mb-4 text-center">{value.heading}</h1>
 									<ul className="row">
 										{value.trackList.map(m => (
 											<Track key={m.track.track_id} {...m.track} />
